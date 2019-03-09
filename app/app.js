@@ -94,3 +94,12 @@ if (!window.Intl) {
 if (process.env.NODE_ENV === 'production') {
   require('offline-plugin/runtime').install(); // eslint-disable-line global-require
 }
+if (process.env.NODE_ENV === 'development') {
+  const a11y = require('react-a11y').default;
+  a11y(React, ReactDOM, {
+    rules: {
+      'img-uses-alt': 'warn',
+      'img-redundant-alt': ['warn', ['image', 'photo', 'foto', 'bild']],
+    },
+  });
+}
